@@ -1,0 +1,121 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Post-publish access help, copy app link, and generated asset completeness",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add a “Trouble opening the app?” help entry point on AuthGate explaining the “Canister ID Not Resolved” gateway error with clear English troubleshooting steps.",
+      "acceptanceCriteria": [
+        "On the AuthGate screen, users can open a help section/modal titled “Trouble opening the app?”",
+        "Help content includes the exact error name “Canister ID Not Resolved” and explains it as a gateway/domain resolution issue (not a user data loss issue).",
+        "Help content lists at least: try incognito/private window, try different browser, try different network (mobile data vs Wi‑Fi), and try again later.",
+        "All help text is in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/TroubleOpeningHelpDialog.tsx",
+          "operation": "create",
+          "description": "Create a reusable help dialog component titled “Trouble opening the app?” that explains the “Canister ID Not Resolved” error as a gateway/domain resolution issue (not data loss) and lists troubleshooting steps (incognito/private window, different browser, different network, try again later). Compose shadcn/ui Dialog primitives (do not modify any files under frontend/src/components/ui). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/AuthGate.tsx",
+          "operation": "modify",
+          "description": "Add a user-facing help entry point labeled “Trouble opening the app?” on the unauthenticated landing screen that opens the shared TroubleOpeningHelpDialog content (no duplicated/inconsistent instructions). Compose existing shadcn/ui components; do not modify ui sources. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add “Copy app link” on AuthGate showing hostname and origin, copying window.location.origin with toast feedback and manual fallback.",
+      "acceptanceCriteria": [
+        "AuthGate includes a “Copy app link” button that copies window.location.origin to the clipboard and shows a success toast.",
+        "The UI displays the current host (e.g., student-reflection-poster-generator.icp0.io) near the copy button so the user can visually verify the domain.",
+        "If clipboard copy fails, an error toast is shown and the user is still able to manually select the displayed URL text."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/AuthGate.tsx",
+          "operation": "modify",
+          "description": "Add a “Copy app link” action that copies window.location.origin to the clipboard and uses the existing Toaster/sonner setup to show success/error toasts. Display the current hostname and the full origin as selectable text near the button (ensure users can manually select/copy the origin if clipboard write fails). Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Expose the same “Trouble opening the app?” help dialog from an authenticated location in AppLayout (footer).",
+      "acceptanceCriteria": [
+        "AppLayout footer contains a link/button labeled “Trouble opening the app?”",
+        "Clicking the link opens the same help content used on AuthGate (no duplicated/inconsistent instructions)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/AppLayout.tsx",
+          "operation": "modify",
+          "description": "Add a footer link/button labeled “Trouble opening the app?” that opens the shared TroubleOpeningHelpDialog component used by AuthGate (reuse the same component to avoid duplicated content). Compose shadcn/ui primitives; do not modify any files under frontend/src/components/ui. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/TroubleOpeningHelpDialog.tsx",
+          "operation": "modify",
+          "description": "Update the reusable dialog component as needed to support being opened from both AuthGate and AppLayout (e.g., accept a custom trigger node via props or expose an `open/onOpenChange` API) while keeping a single source of truth for the instructions. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Ensure all generated static template and branding images exist under frontend/public/assets/generated and are referenced consistently so they load without 404s.",
+      "acceptanceCriteria": [
+        "The following files exist at runtime and load successfully: /assets/generated/template-paper.dim_1600x2000.png, /assets/generated/template-geo.dim_1600x2000.png, /assets/generated/template-campus.dim_1600x2000.png, /assets/generated/template-grid.dim_1600x2000.png, /assets/generated/logo-mark.dim_512x512.png.",
+        "TemplateGallery previews render images without broken-image placeholders.",
+        "AppLayout header logo renders without broken-image placeholders."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/template-paper.dim_1600x2000.png",
+          "operation": "create",
+          "description": "Add the generated asset at the exact path frontend/public/assets/generated/template-paper.dim_1600x2000.png so it is included in the build output and loads without 404s."
+        },
+        {
+          "path": "frontend/public/assets/generated/template-geo.dim_1600x2000.png",
+          "operation": "create",
+          "description": "Add the generated asset at the exact path frontend/public/assets/generated/template-geo.dim_1600x2000.png so it is included in the build output and loads without 404s."
+        },
+        {
+          "path": "frontend/public/assets/generated/template-campus.dim_1600x2000.png",
+          "operation": "create",
+          "description": "Add the generated asset at the exact path frontend/public/assets/generated/template-campus.dim_1600x2000.png so it is included in the build output and loads without 404s."
+        },
+        {
+          "path": "frontend/public/assets/generated/template-grid.dim_1600x2000.png",
+          "operation": "create",
+          "description": "Add the generated asset at the exact path frontend/public/assets/generated/template-grid.dim_1600x2000.png so it is included in the build output and loads without 404s."
+        },
+        {
+          "path": "frontend/public/assets/generated/logo-mark.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated asset at the exact path frontend/public/assets/generated/logo-mark.dim_512x512.png so it is included in the build output and loads without 404s."
+        },
+        {
+          "path": "frontend/src/lib/templates/catalog.ts",
+          "operation": "modify",
+          "description": "Verify the local template catalog references the generated images using the exact required /assets/generated/*.png paths and keep them consistent with the files placed under frontend/public/assets/generated (no path drift)."
+        },
+        {
+          "path": "frontend/src/components/TemplateGallery.tsx",
+          "operation": "modify",
+          "description": "Harden template preview rendering so the gallery does not show broken-image placeholders when using generated assets: ensure preview `src` values align with /assets/generated/*.png and add a safe fallback behavior if an image fails to load (without introducing new routes/pages). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/AppLayout.tsx",
+          "operation": "modify",
+          "description": "Verify the header logo `img` uses the exact required path /assets/generated/logo-mark.dim_512x512.png and remains consistent with the file placed under frontend/public/assets/generated to prevent 404s."
+        },
+        {
+          "path": "frontend/src/components/AuthGate.tsx",
+          "operation": "modify",
+          "description": "Verify the AuthGate logo `img` uses the exact required path /assets/generated/logo-mark.dim_512x512.png and remains consistent with the file placed under frontend/public/assets/generated to prevent 404s."
+        }
+      ]
+    }
+  ]
+}

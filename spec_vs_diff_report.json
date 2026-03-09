@@ -1,0 +1,52 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-17T05:55:00.725Z",
+  "summary": "Implemented a reusable “Trouble opening the app?” dialog and wired it into AuthGate and AppLayout; added AuthGate copy-link logic with toast feedback; added TemplateGallery image error fallback. Static generated assets themselves are not evidenced as added to frontend/public/assets/generated, and some REQ-2/REQ-1 acceptance details are not fully verifiable due to truncation.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Help content lists at least: try incognito/private window, try different browser, try different network (mobile data vs Wi‑Fi), and try again later.",
+      "reason": "The dialog clearly includes steps for different browser, incognito/private mode, and switching networks, but the “try again later” step is not visible in the provided (truncated) dialog content, so this AC cannot be confirmed from the diff summary.",
+      "evidence": [
+        "frontend/src/components/TroubleOpeningHelpDialog.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Display the current hostname near the copy button and show the full origin (protocol + host) in a way that can be manually selected if clipboard copy fails.",
+      "reason": "AuthGate includes copy-to-clipboard logic and toast success/error, but the UI portion that displays hostname/full origin and supports manual selection is not shown in the truncated diff.",
+      "evidence": [
+        "frontend/src/components/AuthGate.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Ensure all generated static image assets are included under frontend/public/assets/generated and load without 404s (template-paper, template-geo, template-campus, template-grid, logo-mark).",
+      "reason": "The diff shows code referencing /assets/generated/logo-mark.dim_512x512.png and TemplateGallery handling failed image loads, but does not show any added/modified files under frontend/public/assets/generated or any build/public asset additions. Therefore the presence of the required image files at runtime cannot be verified from the diff summary.",
+      "evidence": [
+        "frontend/src/components/AppLayout.tsx",
+        "frontend/src/components/AuthGate.tsx (truncated)",
+        "frontend/src/components/TemplateGallery.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Added/changed footer attribution link to caffeine.ai with UTM parameters based on window.location.hostname.",
+      "reason": "BuildRequest does not ask for new attribution/marketing links or UTM tracking parameters; this appears to be unrelated to the specified help/copy-link/assets requirements.",
+      "evidence": [
+        "frontend/src/components/AppLayout.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.66,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/AppLayout.tsx",
+    "frontend/src/components/AuthGate.tsx",
+    "frontend/src/components/TemplateGallery.tsx",
+    "frontend/src/components/TroubleOpeningHelpDialog.tsx",
+    "project_state.json"
+  ]
+}

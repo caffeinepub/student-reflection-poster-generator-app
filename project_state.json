@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Student Reflection & Poster Generator web app deployed on Internet Computer with custom domain; users are attempting to publish and access a live URL but are encountering gateway resolution errors.",
+  "architectural_notes": [],
+  "known_issues": [
+    "Live URL may fail to load with error 'Canister ID Not Resolved' (gateway cannot determine destination canister); may be due to domain/canister mapping, expired draft/live deployment, or network/DNS blocking ICP domains."
+  ],
+  "isFixRequest": true,
+  "imageRequirements": "## Required Images\n- Academic poster template background with subtle paper texture and warm neutral palette (template-paper.dim_1600x2000.png)\n- Minimal geometric academic poster background with light tan and charcoal accents (template-geo.dim_1600x2000.png)\n- Photo-less campus-inspired abstract background with soft greens and off-white (template-campus.dim_1600x2000.png)\n- Modern monochrome poster background with clean grid lines and beige highlights (template-grid.dim_1600x2000.png)\n- App logo mark: simple bookmark + spark icon in dark charcoal on transparent background (logo-mark.dim_512x512.png)",
+  "existing_features": [
+    {
+      "id": "feature-add-a-user-facing-trouble-opening-the-app-help-entry-point-on-the-unauthenticated-landing-screen-authgate-that-explains-the-canister-id-not-resolved-gateway-error-and-provides-clear-troubleshooting-steps-in-english",
+      "title": "Add a user-facing “Trouble opening the app?” help entry point on the unauthenticated landing screen (AuthGate) that explains the “Canister ID Not Resolved” gateway error and provides clear troubleshooting steps in English.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-a-built-in-copy-app-link-action-and-display-the-current-hostname-full-origin-protocol-host-so-users-can-share-the-exact-published-url-they-are-using",
+      "title": "Provide a built-in “Copy app link” action and display the current hostname + full origin (protocol + host) so users can share the exact published URL they are using.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-authenticated-navigation-location-e-g-in-the-applayout-footer-to-open-the-same-trouble-opening-the-app-help-content-so-signed-in-users-can-access-it-too",
+      "title": "Add an authenticated navigation location (e.g., in the AppLayout footer) to open the same “Trouble opening the app?” help content so signed-in users can access it too.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-all-generated-static-image-assets-referenced-by-the-template-catalog-and-branding-are-included-in-the-build-output-under-frontend-public-assets-generated-and-load-without-404s-in-the-published-app",
+      "title": "Ensure all generated static image assets referenced by the template catalog and branding are included in the build output under frontend/public/assets/generated and load without 404s in the published app.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [],
+  "projectName": "ReflectPoster",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

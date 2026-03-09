@@ -1,0 +1,85 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-a-user-facing-trouble-opening-the-app-help-entry-point-on-the-unauthenticated-landing-screen-authgate-that-explains-the-canister-id-not-resolved-gateway-error-and-provides-clear-troubleshooting-steps-in-english",
+      "featureTitle": "Add a user-facing “Trouble opening the app?” help entry point on the unauthenticated landing screen (AuthGate) that explains the “Canister ID Not Resolved” gateway error and provides clear troubleshooting steps in English.",
+      "files": [
+        "frontend/src/components/AuthGate.tsx",
+        "frontend/src/components/TroubleOpeningHelpDialog.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-provide-a-built-in-copy-app-link-action-and-display-the-current-hostname-full-origin-protocol-host-so-users-can-share-the-exact-published-url-they-are-using",
+      "featureTitle": "Provide a built-in “Copy app link” action and display the current hostname + full origin (protocol + host) so users can share the exact published URL they are using.",
+      "files": [
+        "frontend/src/components/AuthGate.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-an-authenticated-navigation-location-e-g-in-the-applayout-footer-to-open-the-same-trouble-opening-the-app-help-content-so-signed-in-users-can-access-it-too",
+      "featureTitle": "Add an authenticated navigation location (e.g., in the AppLayout footer) to open the same “Trouble opening the app?” help content so signed-in users can access it too.",
+      "files": [
+        "frontend/src/components/AppLayout.tsx",
+        "frontend/src/components/TroubleOpeningHelpDialog.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-all-generated-static-image-assets-referenced-by-the-template-catalog-and-branding-are-included-in-the-build-output-under-frontend-public-assets-generated-and-load-without-404s-in-the-published-app",
+      "featureTitle": "Ensure all generated static image assets referenced by the template catalog and branding are included in the build output under frontend/public/assets/generated and load without 404s in the published app.",
+      "files": [
+        "frontend/src/components/AppLayout.tsx",
+        "frontend/src/components/AuthGate.tsx",
+        "frontend/src/components/TemplateGallery.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

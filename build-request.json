@@ -1,0 +1,111 @@
+{
+  "kind": "build_request",
+  "title": "Add post-publish access help and ensure generated template assets are present",
+  "projectName": "ReflectPoster",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add a user-facing “Trouble opening the app?” help entry point on the unauthenticated landing screen (AuthGate) that explains the “Canister ID Not Resolved” gateway error and provides clear troubleshooting steps in English.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-18"
+        ],
+        "quotes": [
+          "Published it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On the AuthGate screen, users can open a help section/modal titled “Trouble opening the app?”",
+        "Help content includes the exact error name “Canister ID Not Resolved” and explains it as a gateway/domain resolution issue (not a user data loss issue).",
+        "Help content lists at least: try incognito/private window, try different browser, try different network (mobile data vs Wi‑Fi), and try again later.",
+        "All help text is in English."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Provide a built-in “Copy app link” action and display the current hostname + full origin (protocol + host) so users can share the exact published URL they are using.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-18"
+        ],
+        "quotes": [
+          "Published it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "AuthGate includes a “Copy app link” button that copies window.location.origin to the clipboard and shows a success toast.",
+        "The UI displays the current host (e.g., student-reflection-poster-generator.icp0.io) near the copy button so the user can visually verify the domain.",
+        "If clipboard copy fails, an error toast is shown and the user is still able to manually select the displayed URL text."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add an authenticated navigation location (e.g., in the AppLayout footer) to open the same “Trouble opening the app?” help content so signed-in users can access it too.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-18"
+        ],
+        "quotes": [
+          "Published it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "AppLayout footer contains a link/button labeled “Trouble opening the app?”",
+        "Clicking the link opens the same help content used on AuthGate (no duplicated/inconsistent instructions)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Ensure all generated static image assets referenced by the template catalog and branding are included in the build output under frontend/public/assets/generated and load without 404s in the published app.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-18"
+        ],
+        "quotes": [
+          "Published it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The following files exist at runtime and load successfully: /assets/generated/template-paper.dim_1600x2000.png, /assets/generated/template-geo.dim_1600x2000.png, /assets/generated/template-campus.dim_1600x2000.png, /assets/generated/template-grid.dim_1600x2000.png, /assets/generated/logo-mark.dim_512x512.png.",
+        "TemplateGallery previews render images without broken-image placeholders.",
+        "AppLayout header logo renders without broken-image placeholders."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit any files under frontend/src/components/ui (Shadcn UI sources must be composed, not modified).",
+    "Do not modify immutable hook files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx.",
+    "Keep backend as a single Motoko actor in backend/main.mo; do not introduce additional backend services."
+  ],
+  "nonGoals": [
+    "Implementing or changing ICP gateway/domain mapping at the infrastructure level (DNS, boundary nodes, custom domain settings).",
+    "Adding third-party monitoring, analytics, or external status-page integrations."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Academic poster template background with subtle paper texture and warm neutral palette (template-paper.dim_1600x2000.png)",
+      "Minimal geometric academic poster background with light tan and charcoal accents (template-geo.dim_1600x2000.png)",
+      "Photo-less campus-inspired abstract background with soft greens and off-white (template-campus.dim_1600x2000.png)",
+      "Modern monochrome poster background with clean grid lines and beige highlights (template-grid.dim_1600x2000.png)",
+      "App logo mark: simple bookmark + spark icon in dark charcoal on transparent background (logo-mark.dim_512x512.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [
+      "Use English for all user-facing text."
+    ],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

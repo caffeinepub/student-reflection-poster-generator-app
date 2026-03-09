@@ -1,0 +1,98 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-17T05:55:00.728Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 4,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Add a user-facing “Trouble opening the app?” help entry point on the unauthenticated landing screen (AuthGate) that explains the “Canister ID Not Resolved” gateway error and provides clear troubleshooting steps in English.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/TroubleOpeningHelpDialog.tsx",
+          "frontend/src/components/AuthGate.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/TroubleOpeningHelpDialog.tsx",
+          "frontend/src/components/AuthGate.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Provide a built-in “Copy app link” action and display the current hostname + full origin (protocol + host) so users can share the exact published URL they are using.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/AuthGate.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/AuthGate.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Add an authenticated navigation location (e.g., in the AppLayout footer) to open the same “Trouble opening the app?” help content so signed-in users can access it too.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/AppLayout.tsx",
+          "frontend/src/components/TroubleOpeningHelpDialog.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/AppLayout.tsx",
+          "frontend/src/components/TroubleOpeningHelpDialog.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Ensure all generated static image assets referenced by the template catalog and branding are included in the build output under frontend/public/assets/generated and load without 404s in the published app.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/template-paper.dim_1600x2000.png",
+          "frontend/public/assets/generated/template-geo.dim_1600x2000.png",
+          "frontend/public/assets/generated/template-campus.dim_1600x2000.png",
+          "frontend/public/assets/generated/template-grid.dim_1600x2000.png",
+          "frontend/public/assets/generated/logo-mark.dim_512x512.png",
+          "frontend/src/lib/templates/catalog.ts",
+          "frontend/src/components/TemplateGallery.tsx",
+          "frontend/src/components/AppLayout.tsx",
+          "frontend/src/components/AuthGate.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/template-paper.dim_1600x2000.png",
+          "frontend/public/assets/generated/template-geo.dim_1600x2000.png",
+          "frontend/public/assets/generated/template-campus.dim_1600x2000.png",
+          "frontend/public/assets/generated/template-grid.dim_1600x2000.png",
+          "frontend/public/assets/generated/logo-mark.dim_512x512.png",
+          "frontend/src/components/TemplateGallery.tsx",
+          "frontend/src/components/AppLayout.tsx",
+          "frontend/src/components/AuthGate.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/public/assets/generated/logo-mark.dim_512x512.png",
+    "frontend/public/assets/generated/template-campus.dim_1600x2000.png",
+    "frontend/public/assets/generated/template-geo.dim_1600x2000.png",
+    "frontend/public/assets/generated/template-grid.dim_1600x2000.png",
+    "frontend/public/assets/generated/template-paper.dim_1600x2000.png",
+    "frontend/src/components/AppLayout.tsx",
+    "frontend/src/components/AuthGate.tsx",
+    "frontend/src/components/TemplateGallery.tsx",
+    "frontend/src/components/TroubleOpeningHelpDialog.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}
